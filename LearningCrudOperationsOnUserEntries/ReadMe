@@ -1,0 +1,6 @@
+Understanding Flow of application from Controller to Service to Repository and backwards
+Learning CRUD Operations on data
+Integration with MongoDB- @Document, extends MongoRepository
+Global Exception Handling- @ControllerAdvice and @ExceptionHandler
+Validation by Jakarta
+Conversion of Objects to JSON by Jackson
