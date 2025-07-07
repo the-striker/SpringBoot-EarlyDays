@@ -1,0 +1,9 @@
+calculator-api/
+├── src/
+│   └── main/
+│       └── java/
+│           └── com.example.calculator/
+│               ├── CalculatorApplication.java
+│               └── controller/
+│                   └── CalculatorController.java
+└── pom.xml
