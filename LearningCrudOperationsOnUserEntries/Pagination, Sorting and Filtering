@@ -1,0 +1,32 @@
+//FILTERING---
+In controller, add this
+ @GetMapping("/users/search")
+    public ResponseEntity<List<UserEntity>> filterUsers(@RequestParam String name) {
+        return ResponseEntity.ok(userService.filterByName(name));
+    }
+In service, add this
+public List<UserEntity> filterByName(String name) {
+        return repo.findByNameContainingIgnoreCase(name);
+    }
+In Repository interface- a custom query must be added so- 
+    List<UserEntity> findByNameContainingIgnoreCase(String name);
+
+//PAGINATION AND SORTING
+in Controller add this
+@GetMapping("/users/page")
+    public ResponseEntity<Page<UserEntity>> getUsersWithPagination(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "name") String sortBy
+    ) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<UserEntity> pagedUsers = userService.getUsersPaginated(pageable);
+        return ResponseEntity.ok(pagedUsers);
+    }
+in Service add tthis
+public Page<UserEntity> getUsersPaginated(Pageable pageable){
+        return repo.findAll(pageable);
+    }
+
+
+
