@@ -1,0 +1,9 @@
+//UserNotFoundException
+//save it as UserNotFoundException
+package com.example.demo.exception;
+
+public class UserNotFoundException extends RuntimeException {
+    public UserNotFoundException(String id) {
+        super("User with ID " + id + " not found");
+    }
+}
